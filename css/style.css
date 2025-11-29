@@ -1,0 +1,112 @@
+/* Tải Font chữ đẹp (Inter) từ Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+:root {
+    --primary-color: #0077c2; /* Màu xanh dương chủ đạo */
+    --accent-color: #ff9900; /* Màu cam nhấn nhá */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    scroll-behavior: smooth;
+}
+
+/* Yêu cầu M3.2: Định dạng Header khi cuộn (Scroll Effect) */
+.header-glass {
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.3); /* Glassmorphism ban đầu */
+}
+.header-scrolled {
+    background-color: white; /* Nền đặc khi cuộn */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0);
+}
+
+/* Yêu cầu M3.3: Hiệu ứng Animation (Fade-in/Slide-in) */
+.feature-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.feature-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Yêu cầu M2.5: Hiệu ứng tương tác mượt mà */
+.transition-all-300 {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Yêu cầu M2.4 Mobile: Hamburger menu (chỉ thay đổi giao diện) */
+@media (max-width: 480px) {
+    #nav-links {
+        display: none; /* Ẩn menu nav chính */
+    }
+    #hamburger-icon {
+        display: block; /* Hiển thị biểu tượng hamburger */
+    }
+}
+@media (min-width: 481px) {
+    #hamburger-icon {
+        display: none; /* Ẩn biểu tượng hamburger trên tablet/desktop */
+    }
+}
+/* Thêm vào file style.css hoặc trong thẻ <style> */
+
+/* ==================================== */
+/* 1. Hiệu ứng Xoay Đĩa (Disk Spin) */
+/* ==================================== */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#cover-img.playing {
+    /* Áp dụng animation khi có class 'playing' */
+    animation: spin 8s linear infinite;
+    /* Hiệu ứng mượt hơn khi dừng/bắt đầu */
+    transition: transform 0.5s ease-out; 
+}
+
+/* ==================================== */
+/* 2. Định dạng Equalizer/Visualizer */
+/* ==================================== */
+.equalizer-bar {
+    /* Đảm bảo chiều rộng và màu sắc */
+    width: 6px; 
+    background-color: #4c51bf; /* Màu indigo-600 */
+    border-radius: 3px;
+    /* Dùng Flexbox trong HTML nên chỉ cần thay đổi chiều cao */
+    height: 5px; /* Chiều cao mặc định khi dừng */
+    transition: height 0.1s ease-out, background-color 0.3s ease; /* Animation mượt mà hơn */
+}
+#equalizer {
+    /* Thay đổi cách hiển thị để mô phỏng dải tần */
+    justify-content: space-between;
+    width: 100px; /* Chiều rộng tổng thể của visualizer */
+}
+
+/* ==================================== */
+/* 3. Tối ưu Thanh trượt (Progress Bar) */
+/* ==================================== */
+/* Progress bar CSS (để đẹp hơn và đồng nhất hơn trên trình duyệt) */
+input[type=range] {
+    -webkit-appearance: none;
+    height: 6px; 
+    background: #e5e7eb;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #4f46e5; /* Màu indigo-600 */
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}

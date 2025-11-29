@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Mã Đề GE01</title>
+    <!-- Tải Tailwind CSS để định dạng -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải thư viện Icon Lucide-React/Lucide-Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        /* Custom style cho iframe tin tức */
+        .news-frame-container {
+            height: 600px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body onload="lucide.createIcons()" class="min-h-screen flex flex-col">
+
+    <!-- 1. Header: Logo và Thanh điều hướng (Nav) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            
+            <!-- Logo (Text) -->
+            <div class="text-2xl font-extrabold text-indigo-600">
+                <a href="#">GE01</a>
+            </div>
+
+            <!-- Thanh điều hướng (Nav) -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 font-medium">
+                    <li><a href="index.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Trang chủ</a></li>
+                    <li><a href="bai01.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Bài tập 01</a></li>
+                    <li><a href="bai02.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Bài tập 02</a></li>
+                    <li><a href="bai03.html" class="hover:text-indigo-600">Bài 03 (Nhạc)</a></li>
+                    <li><a href="thu_vien.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Thư viện</a></li> 
+                    
+                    <li><a href="lien_he.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Menu cho Mobile (Hamburger) -->
+            <button class="md:hidden text-2xl p-2 rounded-lg hover:bg-gray-100">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 2. Body: Nội dung tùy chọn (Thông tin cá nhân & News Frame) -->
+    <main class="flex-grow pt-8 pb-16">
+        <div class="container mx-auto px-4">
+            
+            <!-- Thông tin cá nhân -->
+            <section class="mb-16 bg-white p-8 rounded-xl shadow-lg">
+                <h1 class="text-4xl font-bold mb-6 text-center text-indigo-700">Thông Tin Cá Nhân</h1>
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <!-- Ảnh cá nhân/Placeholder -->
+                    <div class="flex-shrink-0">
+                        <img src="images/avatar.jpg" alt="Ảnh cá nhân" class="w-40 h-40 object-cover rounded-full shadow-xl border-4 border-indigo-200">
+                    </div>
+                    <!-- Mô tả -->
+                    <div class="text-lg space-y-3">
+                        <p><span class="font-semibold">Họ và Tên:</span> Đào Quang Vinh (Mã số sinh viên :231A010817)</p>
+                        <p><span class="font-semibold">Ngành học:</span> Công nghệ Thông tin</p>
+                        <p><span class="font-semibold">Giới thiệu:</span> Chào mừng đến với trang cá nhân của tôi. Đây là nơi tổng hợp các bài tập và dự án phát triển web cơ bản theo yêu cầu của Mã Đề GE01. Tôi đam mê lập trình Front-end, đặc biệt là việc xây dựng các giao diện người dùng thân thiện và responsive.</p>
+                        <p><span class="font-semibold">Email:</span> quangvinh81011@gmail.com</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chèn Frame Đọc Báo Mới -->
+            <section class="py-12 text-center">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">Khám Phá Thêm Về Công Nghệ</h2>
+                    
+                    <a 
+                        href="https://vnexpress.net/" 
+                        target="_blank" 
+                        class="inline-block px-8 py-3 bg-red-600 text-white font-bold text-lg rounded-full shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105"
+                    >
+                        Đọc Tin Tức Tại VnExpress (Mở Tab Mới)
+                    </a>
+                    </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 3. Footer: Bản quyền và Liên kết mạng xã hội -->
+    <footer id="contact-info" class="bg-gray-800 text-white py-8 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            
+            <div class="flex justify-center space-x-6 mb-4">
+                
+                <a href="https://www.facebook.com/" class="text-gray-400 hover:text-indigo-400 transition duration-300" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
+                
+                <a href="https://x.com/" class="text-gray-400 hover:text-indigo-400 transition duration-300" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.instagram.com/" class="text-gray-400 hover:text-indigo-400 transition duration-300" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+            </div>
+    
+            <p class="text-sm text-gray-400">
+                &copy; 2024 Trang Chủ . Thực hiện bởi Đào Quang Vinh
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

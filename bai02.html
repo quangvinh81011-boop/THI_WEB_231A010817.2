@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 02 - Game Đoán Số</title>
+    <!-- Tải Tailwind CSS để định dạng -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e0f2fe; /* Nền xanh nhạt */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Hiệu ứng Confetti đơn giản bằng CSS */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: var(--color);
+            opacity: 0;
+            animation: fall 3s ease-in infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100px) rotateZ(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotateZ(1080deg);
+            }
+        }
+
+        /* Định nghĩa màu và độ trễ cho các miếng confetti */
+        .confetti:nth-child(3n + 1) { background-color: #f6e05e; animation-delay: 0s; left: 10%; }
+        .confetti:nth-child(3n + 2) { background-color: #63b3ed; animation-delay: 0.5s; left: 40%; }
+        .confetti:nth-child(3n + 3) { background-color: #fc8181; animation-delay: 1s; left: 70%; }
+        .confetti:nth-child(5n + 1) { background-color: #9f7aea; animation-delay: 0.3s; left: 25%; width: 8px; height: 16px; }
+        .confetti:nth-child(5n + 2) { background-color: #48bb78; animation-delay: 0.8s; left: 60%; width: 12px; height: 24px; }
+        .confetti:nth-child(5n + 3) { background-color: #f6ad55; animation-delay: 1.2s; left: 85%; width: 9px; height: 18px; }
+    </style>
+</head>
+<body>
+
+    <main class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl w-full max-w-md text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-indigo-700">GAME ĐOÁN SỐ</h1>
+        <p class="text-gray-600 mb-6">Đoán một số ngẫu nhiên từ <span class="font-bold text-lg text-indigo-500">50</span> đến <span class="font-bold text-lg text-indigo-500">150</span>.</p>
+
+        <!-- Khu vực nhập liệu -->
+        <div id="input-area" class="space-y-4">
+            <input 
+                type="number" 
+                id="guessInput" 
+                min="50" 
+                max="150" 
+                placeholder="Nhập số bạn đoán (50-150)" 
+                class="w-full p-3 border-2 border-indigo-300 rounded-lg text-center text-xl focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition duration-200"
+            >
+            <button 
+                id="checkButton" 
+                onclick="checkGuess()" 
+                class="w-full py-3 bg-indigo-600 text-white font-bold rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.01]"
+            >
+                Kiểm Tra
+            </button>
+        </div>
+
+        <!-- Kết quả và thông báo -->
+        <div class="mt-8 space-y-4">
+            <p id="message" class="text-xl font-semibold min-h-[30px]"></p>
+            <p class="text-gray-500">Số lần thử: <span id="attempts" class="font-bold text-indigo-600">0</span></p>
+            
+            <!-- Nút chơi lại (Ẩn ban đầu) -->
+            <button 
+                id="restartButton" 
+                onclick="initializeGame()" 
+                class="hidden w-full py-3 bg-green-500 text-white font-bold rounded-lg shadow-md hover:bg-green-600 transition duration-300 transform hover:scale-[1.01]"
+            >
+                Chơi Lại
+            </button>
+        </div>
+    </main>
+    
+    <!-- Container cho Confetti Animation -->
+    <div id="confetti" class="confetti-container hidden">
+        <div class="confetti" style="left: 10%;"></div>
+        <div class="confetti" style="left: 20%;"></div>
+        <div class="confetti" style="left: 30%;"></div>
+        <div class="confetti" style="left: 40%;"></div>
+        <div class="confetti" style="left: 50%;"></div>
+        <div class="confetti" style="left: 60%;"></div>
+        <div class="confetti" style="left: 70%;"></div>
+        <div class="confetti" style="left: 80%;"></div>
+        <div class="confetti" style="left: 90%;"></div>
+        <div class="confetti" style="left: 5%;"></div>
+        <div class="confetti" style="left: 95%;"></div>
+    </div>
+
+    <script>
+        let targetNumber;
+        let attempts;
+        let isGameOver = false;
+        
+        const MIN_RANGE = 50;
+        const MAX_RANGE = 150;
+
+        // Lấy các phần tử DOM
+        const messageElement = document.getElementById('message');
+        const attemptsElement = document.getElementById('attempts');
+        const guessInput = document.getElementById('guessInput');
+        const checkButton = document.getElementById('checkButton');
+        const restartButton = document.getElementById('restartButton');
+        const confettiContainer = document.getElementById('confetti');
+
+        /**
+         * Logic tư duy: Tạo số ngẫu nhiên
+         * Công thức: Math.floor(Math.random() * (max - min + 1)) + min
+         * (150 - 50 + 1) = 101 => Tạo số nguyên ngẫu nhiên từ 0 đến 100, sau đó cộng thêm 50.
+         */
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * (MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
+        }
+
+        // Khởi tạo/Khôi phục game
+        function initializeGame() {
+            targetNumber = generateRandomNumber();
+            attempts = 0;
+            isGameOver = false;
+
+            // Đặt lại giao diện
+            messageElement.textContent = 'Hãy bắt đầu đoán số!';
+            messageElement.classList.remove('text-green-600', 'text-red-600');
+            attemptsElement.textContent = attempts;
+            guessInput.value = '';
+            guessInput.disabled = false;
+            checkButton.classList.remove('hidden');
+            restartButton.classList.add('hidden');
+            confettiContainer.classList.add('hidden'); // Ẩn confetti
+            
+            // Log target number for debugging (optional in real game)
+            console.log('Số ngẫu nhiên mới: ' + targetNumber);
+        }
+
+        /**
+         * Logic tư duy: Xử lý Input và so sánh
+         * - Bước 1: Lấy và chuyển đổi giá trị input thành số nguyên.
+         * - Bước 2: Xử lý lỗi (Validation) - Đảm bảo giá trị là số hợp lệ và nằm trong phạm vi (50-150).
+         * - Bước 3: So sánh và cập nhật trạng thái game/thông báo.
+         */
+        function checkGuess() {
+            if (isGameOver) return; // Ngăn chặn đoán tiếp khi game kết thúc
+
+            // Bước 1: Lấy và chuyển đổi giá trị
+            const guess = parseInt(guessInput.value);
+
+            // Bước 2: Xử lý lỗi (Validation)
+            if (isNaN(guess) || guess < MIN_RANGE || guess > MAX_RANGE) {
+                messageElement.textContent = `Lỗi: Vui lòng nhập một số hợp lệ từ ${MIN_RANGE} đến ${MAX_RANGE}.`;
+                messageElement.classList.add('text-red-600');
+                return; // Dừng hàm nếu input không hợp lệ
+            }
+
+            // Tăng số lần thử
+            attempts++;
+            attemptsElement.textContent = attempts;
+            messageElement.classList.remove('text-red-600'); // Xóa màu đỏ nếu là lỗi trước đó
+
+            // Bước 3: So sánh và cập nhật thông báo
+            if (guess === targetNumber) {
+                // Đoán đúng
+                messageElement.textContent = `🎉 CHÚC MỪNG! Bạn đã đoán đúng số ${targetNumber} chỉ sau ${attempts} lần thử!`;
+                messageElement.classList.add('text-green-600');
+                isGameOver = true;
+                
+                // Vô hiệu hóa input và hiển thị nút chơi lại
+                guessInput.disabled = true;
+                checkButton.classList.add('hidden');
+                restartButton.classList.remove('hidden');
+
+                // Hiển thị Confetti Animation
+                confettiContainer.classList.remove('hidden');
+                
+                // Tự động ẩn confetti sau 4 giây
+                setTimeout(() => {
+                    confettiContainer.classList.add('hidden');
+                }, 4000);
+
+            } else if (guess < targetNumber) {
+                // Quá thấp
+                messageElement.textContent = 'Số bạn đoán QUÁ THẤP. Hãy thử lại!';
+                
+            } else {
+                // Quá cao
+                messageElement.textContent = 'Số bạn đoán QUÁ CAO. Hãy thử lại!';
+            }
+            
+            // Xóa input sau khi đoán
+            guessInput.value = '';
+        }
+
+        // Gán sự kiện cho phím Enter
+        guessInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của Enter (nếu có)
+                checkGuess();
+            }
+        });
+
+        // Khởi chạy game khi tải trang
+        initializeGame();
+    </script>
+</body>
+</html>

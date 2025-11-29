@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tai nghe không dây Apple AirPods Pro 2 2023 USB-C - Âm Thanh Vượt Trội</title>
+    <!-- Tải Tailwind CSS để định dạng -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải thư viện Icon Lucide-React/Lucide-Icons (vì tôi không dùng React, tôi sẽ dùng Lucide-Icons qua CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Cấu hình Font chữ đẹp (Inter) và tùy chỉnh Tailwind -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --primary-color: #0077c2; /* Màu xanh dương chủ đạo */
+            --accent-color: #ff9900; /* Màu cam nhấn nhá */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            scroll-behavior: smooth;
+        }
+
+        /* Yêu cầu M3.2: Định dạng Header khi cuộn (Scroll Effect) */
+        .header-glass {
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.3); /* Glassmorphism ban đầu */
+        }
+        .header-scrolled {
+            background-color: white; /* Nền đặc khi cuộn */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(0);
+        }
+
+        /* Yêu cầu M3.3: Hiệu ứng Animation (Fade-in/Slide-in) */
+        .feature-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .feature-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Yêu cầu M2.5: Hiệu ứng tương tác mượt mà */
+        .transition-all-300 {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Yêu cầu M2.4 Mobile: Hamburger menu (chỉ thay đổi giao diện) */
+        @media (max-width: 480px) {
+            #nav-links {
+                display: none; /* Ẩn menu nav chính */
+            }
+            #hamburger-icon {
+                display: block; /* Hiển thị biểu tượng hamburger */
+            }
+        }
+        @media (min-width: 481px) {
+            #hamburger-icon {
+                display: none; /* Ẩn biểu tượng hamburger trên tablet/desktop */
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- M1.1: Header - Sticky Glassmorphism -->
+    <header id="main-header" class="header-glass sticky top-0 z-50 transition-all-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            
+            <!-- Logo (Text) -->
+            <div class="text-2xl font-black text-gray-900">
+                <a href="#home" class="hover:text-primary-color transition-all-300">Apple AirPods Pro 2 2023 USB-C <span class="text-[var(--primary-color)]">Audio</span></a>
+            </div>
+
+            <!-- Thanh điều hướng (Nav) -->
+            <nav class="hidden sm:block">
+                <ul id="nav-links" class="flex space-x-6 font-medium">
+                    <li><a href="#home" class="hover:text-[var(--primary-color)] transition-all-300">Trang chủ</a></li>
+                    <li><a href="#features" class="hover:text-[var(--primary-color)] transition-all-300">Tính năng</a></li>
+                    <li><a href="#gallery" class="hover:text-[var(--primary-color)] transition-all-300">Thư viện ảnh</a></li>
+                    <li><a href="#contact" class="hover:text-[var(--primary-color)] transition-all-300">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger Icon (Chỉ hiển thị trên Mobile <= 480px, chưa cần JS) -->
+            <button id="hamburger-icon" class="block text-2xl p-2 rounded-full hover:bg-gray-100/50 sm:hidden">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- M1.2: Hero Section (Khu vực nổi bật) -->
+        <section id="home" class="relative overflow-hidden bg-gradient-to-br from-indigo-900 to-purple-800 text-white pt-24 pb-32">
+            <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Nội dung Hero -->
+                <div class="z-10">
+                    <!-- Tiêu đề chính -->
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                        Âm Thanh Vượt Trội - <span class="text-yellow-400">Tự Do Tuyệt Đối</span>
+                    </h1>
+                    <!-- Mô tả ngắn -->
+                    <p class="text-xl mb-10 opacity-90 max-w-lg">
+                        Trải nghiệm âm nhạc không giới hạn với Tai nghe không dây Apple AirPods Pro 2 2023 USB-C . Khử ồn chủ động hoàn hảo, pin dùng 24 giờ và âm bass sâu lắng.
+                    </p>
+                    <!-- Nút CTA -->
+                    <a href="#" class="inline-block px-10 py-4 bg-[var(--accent-color)] text-gray-900 font-bold text-lg rounded-full shadow-xl hover:bg-orange-500 transition-all-300 transform hover:scale-[1.02]">
+                        Mua Ngay Với Ưu Đãi
+                    </a>
+                    <p class="mt-4 text-sm opacity-70">Giao hàng miễn phí toàn quốc</p>
+                </div>
+
+                <!-- Hình ảnh chính của sản phẩm -->
+                <div class="relative flex justify-center lg:justify-end z-10">
+                    <img src="images/01.jpg" alt="Tai nghe không dây ABC" class="w-full max-w-lg lg:max-w-none rounded-2xl shadow-2xl transform hover:scale-[1.05] transition-transform duration-500" />
+                </div>
+            </div>
+
+            <!-- Hình nền trang trí (tùy chọn) -->
+            
+        </section>
+
+        <!-- M1.3: Features Section (Tính năng nổi bật) -->
+        <section id="features" class="py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16">Các Tính Năng Vượt Trội</h2>
+                
+                <!-- M2.2 Layout: CSS Grid/Flexbox. M2.4: Responsive layout (1 cột mobile, 2 cột tablet, 4 cột desktop) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Tính năng 1 -->
+                    <div class="feature-card p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all-300">
+                        <div class="p-3 mb-4 inline-flex rounded-full bg-blue-100 text-[var(--primary-color)]">
+                            <i data-lucide="volume-x" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Chống Ồn Chủ Động</h3>
+                        <p class="text-gray-600">Công nghệ ANC tiên tiến loại bỏ tiếng ồn xung quanh, mang lại không gian yên tĩnh tuyệt đối cho âm nhạc của bạn.</p>
+                    </div>
+
+                    <!-- Tính năng 2 -->
+                    <div class="feature-card p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all-300">
+                        <div class="p-3 mb-4 inline-flex rounded-full bg-yellow-100 text-[var(--accent-color)]">
+                            <i data-lucide="battery-charging" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pin 24 Giờ Liên Tục</h3>
+                        <p class="text-gray-600">Thưởng thức âm nhạc suốt cả ngày chỉ với một lần sạc. Hộp sạc nhỏ gọn cung cấp thêm 3 lần sạc đầy.</p>
+                    </div>
+
+                    <!-- Tính năng 3 -->
+                    <div class="feature-card p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all-300">
+                        <div class="p-3 mb-4 inline-flex rounded-full bg-green-100 text-green-600">
+                            <i data-lucide="bluetooth" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Kết Nối Bluetooth 5.2</h3>
+                        <p class="text-gray-600">Kết nối ổn định và tốc độ cao với Bluetooth 5.2. Đồng bộ hóa âm thanh hình ảnh tuyệt đối khi xem phim/chơi game.</p>
+                    </div>
+
+                    <!-- Tính năng 4 -->
+                    <div class="feature-card p-6 bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all-300">
+                        <div class="p-3 mb-4 inline-flex rounded-full bg-red-100 text-red-600">
+                            <i data-lucide="ear" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Thiết Kế Ergonomic</h3>
+                        <p class="text-gray-600">Phù hợp hoàn hảo với tai của bạn, tạo cảm giác thoải mái và chắc chắn ngay cả khi tập luyện cường độ cao.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- M1.4 & M3.1: Gallery Section (Thư viện ảnh đơn giản) -->
+        <section id="gallery" class="py-24 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16">Thư Viện Ảnh Sản Phẩm</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Ảnh lớn (Hiển thị) -->
+                    <div class="lg:col-span-2 bg-white rounded-xl shadow-2xl overflow-hidden p-4">
+                        <img id="main-image" src="images/02.jpg" alt="Ảnh sản phẩm lớn" class="w-full h-auto object-cover rounded-lg" />
+                    </div>
+
+                    <!-- 3 Ảnh nhỏ (Thumbnails) -->
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-semibold mb-4">Các góc nhìn khác</h3>
+                        
+                        <div class="thumbnail-container">
+                            <img src="images/03.jpg.jpg" alt="images/03.jpg.jpg" 
+                                class="thumbnail w-full h-auto object-cover rounded-lg cursor-pointer border-4 border-[var(--primary-color)] shadow-md transition-all-300" 
+                                data-full-src="images/03.jpg.jpg " 
+                                data-index="0"
+                            />
+                        </div>
+
+                        <div class="thumbnail-container">
+                            <img src="images/04.jpg" alt="images/04.jpg" 
+                                class="thumbnail w-full h-auto object-cover rounded-lg cursor-pointer border-4 border-transparent hover:border-[var(--primary-color)] transition-all-300" 
+                                data-full-src="images/04.jpg" 
+                                data-index="1"
+                            />
+                        </div>
+
+                        <div class="thumbnail-container">
+                            <img src="images/05.jpg" alt="images/05.jpg" 
+                                class="thumbnail w-full h-auto object-cover rounded-lg cursor-pointer border-4 border-transparent hover:border-[var(--primary-color)] transition-all-300" 
+                                data-full-src="images/05.jpg" 
+                                data-index="2"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Liên hệ/Body tùy chọn -->
+        <section id="contact" class="py-24">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-6">Bạn đã sẵn sàng trải nghiệm?</h2>
+                <p class="text-xl mb-10 text-gray-600">Liên hệ với chúng tôi ngay hôm nay để nhận được ưu đãi tốt nhất!</p>
+                <a href="mailto:info@abc.com" class="inline-block px-10 py-4 bg-[var(--primary-color)] text-white font-bold text-lg rounded-full shadow-lg hover:bg-blue-700 transition-all-300 transform hover:scale-105">
+                    Gửi Yêu Cầu Tư Vấn
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- M1.3: Footer - Bản quyền và Mạng xã hội -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            
+            <!-- Liên kết mạng xã hội -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.facebook.com/" class="text-gray-400 hover:text-[var(--primary-color)] transition-colors duration-300">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-[var(--primary-color)] transition-colors duration-300">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-[var(--primary-color)] transition-colors duration-300">
+                    <i data-lucide="twitter" class="w-6 h-6"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-[var(--primary-color)] transition-colors duration-300">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
+            </div>
+
+            <!-- Thông tin bản quyền -->
+            <p class="text-sm text-gray-500">
+                &copy; 2024 Tai nghe Apple AirPods Pro 2 2023 USB-C. Tất cả bản quyền được bảo lưu. Thiết kế bởi GE01.
+            </p>
+        </div>
+    </footer>
+
+    <!-- M3: Tương tác với JavaScript -->
+    <script>
+        // Tải icon từ thư viện lucide
+        lucide.createIcons();
+
+        // ------------------------------------
+        // M3.1: Thư viện ảnh đơn giản
+        // ------------------------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.getElementById('main-image');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const primaryColor = 'var(--primary-color)';
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const fullSrc = this.getAttribute('data-full-src');
+                    
+                    // 1. Cập nhật ảnh lớn
+                    mainImage.src = fullSrc;
+                    
+                    // 2. Cập nhật viền (active state)
+                    thumbnails.forEach(t => {
+                        t.style.borderColor = 'transparent'; // Reset tất cả
+                    });
+                    this.style.borderColor = primaryColor; // Đặt viền cho ảnh đang được chọn
+                });
+            });
+        });
+
+
+        // ------------------------------------
+        // M3.2: Scroll Effect (Header)
+        // ------------------------------------
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            // Thêm class 'scrolled' nếu cuộn xuống (ví dụ > 50px)
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+
+        // ------------------------------------
+        // M3.3: Tư duy sáng tạo - Intersection Observer
+        // Hiệu ứng fade-in khi các Feature Section xuất hiện
+        // ------------------------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            const observerOptions = {
+                root: null, // Sử dụng viewport làm root
+                rootMargin: '0px',
+                threshold: 0.2 // Kích hoạt khi 20% phần tử hiển thị
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    // Nếu phần tử đang hiển thị trong viewport
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        // Ngừng quan sát sau khi đã thực hiện animation
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const featureObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+            featureCards.forEach(card => {
+                featureObserver.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Viện Ảnh - Sản Phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css"> 
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+    <header class="sticky top-0 z-50 bg-white shadow-md backdrop-filter backdrop-blur-md bg-opacity-90">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-indigo-600">
+                <a href="index.html"></a>
+            </h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 font-medium">
+                    <li><a href="index.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Trang chủ</a></li>
+                    <li><a href="bai01.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Bài tập 01</a></li>
+                    <li><a href="bai02.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Bài tập 02</a></li>
+                    <li><a href="#" class="text-indigo-600 font-semibold transition duration-300 border-b-2 border-indigo-600">Thư viện</a></li>
+                    <li><a href="#contact-info" class="text-gray-600 hover:text-indigo-600 transition duration-300">Liên hệ</a></li>
+                </ul>
+            </nav>
+            </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 flex-grow">
+        <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-10 border-b pb-3">Thư Viện Ảnh</h2>
+        
+        <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <div class="bg-white p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <img src="images/01.jpg" alt="Ảnh sản phẩm 1" class="w-full h-auto object-cover rounded-md mb-2">
+                <p class="text-center text-sm font-medium text-gray-600">Góc nhìn chính</p>
+            </div>
+
+            <div class="bg-white p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <img src="images/02.jpg" alt="Ảnh sản phẩm 2" class="w-full h-auto object-cover rounded-md mb-2">
+                <p class="text-center text-sm font-medium text-gray-600">tai nghe </p>
+            </div>
+            
+            <div class="bg-white p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <img src="images/03.jpg.jpg" alt="Ảnh sản phẩm 3" class="w-full h-auto object-cover rounded-md mb-2">
+                <p class="text-center text-sm font-medium text-gray-600">hộp đựng</p>
+            </div>
+            
+            <div class="bg-white p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <img src="images/04.jpg" alt="Ảnh sản phẩm 4" class="w-full h-auto object-cover rounded-md mb-2">
+                <p class="text-center text-sm font-medium text-gray-600">trong hộp có gì</p>
+            </div>
+            
+            </section>
+        
+    </main>
+    
+    <footer id="contact-info" class="bg-gray-800 text-white py-8 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="ĐƯỜNG_LINK_FACEBOOK_CỦA_BẠN" class="text-gray-400 hover:text-indigo-400 transition duration-300" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-indigo-400 transition duration-300" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-6 h-6"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-indigo-400 transition duration-300" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+            </div>
+            <p class="text-sm text-gray-400">
+                &copy; 2024 Thư Viện. Thực hiện bởi Đào Quang VInh
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
